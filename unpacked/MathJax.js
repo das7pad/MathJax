@@ -992,21 +992,8 @@ MathJax.cdnFileVersions = {};  // can be used to specify revisions for individua
     //  and values).
     //
     Styles: function (styles,callback) {
-      var styleString = this.StyleString(styles);
-      if (styleString === "") {
-        callback = BASE.Callback(callback);
-        callback();
-      } else {
-        var style = document.createElement("style"); style.type = "text/css";
-        this.head = HEAD(this.head);
-        this.head.appendChild(style);
-        if (style.styleSheet && typeof(style.styleSheet.cssText) !== 'undefined') {
-          style.styleSheet.cssText = styleString;
-        } else {
-          style.appendChild(document.createTextNode(styleString));
-        }
-        callback = this.timer.create.call(this,callback,style);
-      }
+      callback = BASE.Callback(callback);
+      callback();
       return callback;
     },
 
